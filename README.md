@@ -12,7 +12,7 @@ Hosted by Momotaz Begum, Associate Professor, and Mostafa Hussein, Research Scie
 
 ## Syllabus
 
-- Day 1: Python for Robotics
+- [Day 1](day1.md): Python for Robotics
   - Introduction to Python fundamentals for robotics applications
   - Hands-on examples with perception:
     - Face detection

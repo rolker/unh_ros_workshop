@@ -6,7 +6,7 @@ We quickly went over the following tutorial. It was recommended to test our loca
 
 <https://cs231n.github.io/python-numpy-tutorial/>
 
-We then moved to the Day 1 notebook <day1/Day1_Python_Vision.ipynb>.
+We then moved to the [Day 1 notebook](day1/Day1_Python_Vision.ipynb).
 
 Note: a requirements file was added to this repository to help with the initial setup.
 
