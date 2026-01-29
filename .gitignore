@@ -56,3 +56,7 @@ dmypy.json
 # Project specific
 day1/yolov8n.pt
 tmp/
+ros_bootcamp_ws/install/
+ros_bootcamp_ws/build/
+ros_bootcamp_ws/log/
+
