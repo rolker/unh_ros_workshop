@@ -1,0 +1,8 @@
+opencv-python
+numpy
+matplotlib
+tqdm
+insightface
+onnxruntime-gpu
+ultralytics
+ipykernel
