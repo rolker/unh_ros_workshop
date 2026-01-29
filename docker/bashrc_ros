@@ -1,0 +1,22 @@
+# ROS Humble bashrc customizations
+# This file is sourced in the container to provide helpful aliases and environment setup
+
+# ROS aliases
+alias cb='colcon build --symlink-install'
+alias ct='colcon test'
+alias ctr='colcon test-result --verbose'
+alias killros='killall -9 ros2 && killall -9 python3'
+
+# Workspace shortcuts
+alias ws='cd /workspace/ros_bootcamp_ws'
+alias src='cd /workspace/ros_bootcamp_ws/src'
+
+# Source workspace automatically (if it exists)
+if [ -f "/workspace/ros_bootcamp_ws/install/setup.bash" ]; then
+    source /workspace/ros_bootcamp_ws/install/setup.bash
+fi
+
+# Helpful message
+echo "ROS Humble environment loaded!"
+echo "CUDA Version: $(nvcc --version 2>/dev/null | grep release | awk '{print $5}' || echo 'Not available')"
+echo "GPU: $(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null || echo 'Not available')"

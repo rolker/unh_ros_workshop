@@ -60,3 +60,6 @@ ros_bootcamp_ws/install/
 ros_bootcamp_ws/build/
 ros_bootcamp_ws/log/
 
+# Docker
+docker/.env
+

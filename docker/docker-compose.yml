@@ -1,0 +1,60 @@
+services:
+  ros-humble:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USERNAME: ros
+        USER_UID: ${USER_UID:-1000}
+        USER_GID: ${USER_GID:-1000}
+    image: ros-humble-gpu:latest
+    container_name: ros-humble-dev
+    hostname: ros-humble-container
+    
+    # GPU support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu, compute, utility]
+    
+    # Network configuration - host mode for easy ROS communication
+    network_mode: host
+    
+    # Enable interactive terminal
+    stdin_open: true
+    tty: true
+    
+    # Environment variables
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-0}
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    
+    # Volume mounts
+    volumes:
+      # Share source code
+      - ../ros_bootcamp_ws/src:/workspace/ros_bootcamp_ws/src:rw
+      
+      # Container-specific build artifacts (avoid conflicts with host Jazzy)
+      - humble_build:/workspace/ros_bootcamp_ws/build
+      - humble_install:/workspace/ros_bootcamp_ws/install
+      - humble_log:/workspace/ros_bootcamp_ws/log
+      
+      # X11 socket for GUI applications
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      
+      # Optional: Share .bashrc customizations
+      - ./bashrc_ros:/home/ros/.bashrc_ros:ro
+    
+    # Keep container running
+    command: bash
+
+volumes:
+  humble_build:
+  humble_install:
+  humble_log:

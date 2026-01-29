@@ -1,0 +1,28 @@
+# Build artifacts
+**/build/
+**/install/
+**/log/
+
+# Python
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.Python
+**/.venv/
+**/venv/
+
+# IDE
+**/.vscode/
+**/.idea/
+**/*.swp
+**/*.swo
+*~
+
+# Git
+**/.git/
+**/.gitignore
+
+# Temporary files
+**/tmp/
+**/*.log
