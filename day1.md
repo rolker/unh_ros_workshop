@@ -24,4 +24,16 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Note, ipykernel was added so VSCode wouldn't prompt to install it when first running the notebook.
+Notes:
+
+- ipykernel was added so VSCode wouldn't prompt to install it when first running the notebook.
+- The requirements installs the gpu version of onnxruntime
+- The notebook was modified so FaceAnalysis is instantiated with GPU support
+
+## Python Vision Notebook
+
+We ran through the cells of the notebook to incrementally build a vision face recognition application using our laptop camera.
+
+## Install ROS
+
+We concluded by installing ROS 2 to prepare for the next class. On Ubuntu 24.04, Jazzy was installed.
