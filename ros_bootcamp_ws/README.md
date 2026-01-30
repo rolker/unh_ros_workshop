@@ -1,12 +1,33 @@
 # ROS Bootcamp Workspace
 
+This workspace contains the bootcamp example code for learning ROS2 concepts.
+
 ## Build
+
 ```bash
-source /opt/ros/humble/setup.bash
-cd ~/ros_bootcamp_ws
-colcon build
-source install/setup.bash
+# From repository root
+make bootcamp
+
+# Or manually
+source humble_ws/install/setup.bash
+source underlay_ws/install/setup.bash
+cd ros_bootcamp_ws
+colcon build --symlink-install
 ```
+
+## Setup
+
+After building, source only the bootcamp workspace:
+
+```bash
+source ros_bootcamp_ws/install/setup.bash
+```
+
+This automatically includes the underlay and humble workspaces.
+
+## Examples
+
+## Examples
 
 ## Basics: pub/sub
 Terminal A:

@@ -51,3 +51,45 @@ ROS2 Documentation: <https://docs.ros.org/en/humble/index.html>
 It will be very good if you can read through it during the weekend and check the tutorials.
 
 **Please remember to bring a laptop that has Linux already installed on it. Expect that you will be doing a lot of coding.**
+
+## Build System
+
+This repository contains three ROS2 workspaces that must be built in order:
+
+1. **humble_ws** - ROS2 Humble built from source (for Ubuntu 24.04 Noble)
+2. **underlay_ws** - Missing dependencies (cv_bridge, rqt_image_view)
+3. **ros_bootcamp_ws** - Workshop code and examples
+
+### Quick Start
+
+```bash
+# Build everything in order
+make all
+
+# Or build individual workspaces
+make init       # Initialize humble workspace (download sources)
+make humble     # Build ROS2 Humble from source
+make underlay   # Build underlay dependencies
+make bootcamp   # Build bootcamp workspace
+```
+
+### Setup Environment
+
+After building, source only the final workspace:
+
+```bash
+source ros_bootcamp_ws/install/setup.bash
+```
+
+The bootcamp workspace setup automatically sources the underlay and humble workspaces.
+
+### Clean Build Artifacts
+
+```bash
+make clean             # Clean underlay and bootcamp
+make clean-humble      # Clean humble workspace
+make clean-underlay    # Clean underlay workspace
+make clean-bootcamp    # Clean bootcamp workspace
+```
+
+See `make help` for all available targets.

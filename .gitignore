@@ -56,6 +56,18 @@ dmypy.json
 # Project specific
 day1/yolov8n.pt
 tmp/
+
+# ROS2 workspace build artifacts
+humble_ws/install/
+humble_ws/build/
+humble_ws/log/
+humble_ws/src/
+
+underlay_ws/install/
+underlay_ws/build/
+underlay_ws/log/
+underlay_ws/src/
+
 ros_bootcamp_ws/install/
 ros_bootcamp_ws/build/
 ros_bootcamp_ws/log/
