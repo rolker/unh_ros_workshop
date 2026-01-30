@@ -18,13 +18,20 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
     gdb \
+    v4l-utils \
+    libv4l-dev \
+    libgtk-3-dev \
+    libavcodec-dev \
+    libavformat-dev \
+    libswscale-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install common Python packages for vision/ML workloads
-# Note: Install additional packages as needed for your specific use case
-RUN pip3 install --no-cache-dir --break-system-packages \
-    numpy \
-    opencv-python-headless || true
+# Copy requirements.txt from parent directory
+COPY requirements.txt /tmp/requirements.txt
+
+
+# Install Python packages from requirements.txt
+RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
 
 # Setup user to match host user (avoid permission issues)
 ARG USERNAME=ros
@@ -37,6 +44,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
+    && usermod -a -G video $USERNAME \
     && rm -rf /var/lib/apt/lists/*
 
 # Setup workspace
@@ -44,7 +52,7 @@ RUN mkdir -p /workspace/ros_bootcamp_ws/src
 WORKDIR /workspace/ros_bootcamp_ws
 
 # Copy entrypoint script
-COPY entrypoint.sh /entrypoint.sh
+COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 USER $USERNAME

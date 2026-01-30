@@ -39,8 +39,9 @@ class VisionNode(Node):
 
         # Face DB (optional): fill with your enrolled embeddings later
         # For bootcamp simplicity, we keep it empty by default.
-        with open("face_db.pkl", "rb") as f:
-            self.face_db = pickle.load(f)
+        # with open("face_db.pkl", "rb") as f:
+        #     self.face_db = pickle.load(f)
+        self.face_db = {}
         
         self.sub = self.create_subscription(Image, '/camera/image_raw', self.on_image, 10)
         self.pub_img = self.create_publisher(Image, '/vision/annotated', 10)

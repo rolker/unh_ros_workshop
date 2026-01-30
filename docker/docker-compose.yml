@@ -1,8 +1,8 @@
 services:
   ros-humble:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: docker/Dockerfile
       args:
         USERNAME: ros
         USER_UID: ${USER_UID:-1000}
@@ -34,6 +34,11 @@ services:
       - QT_X11_NO_MITSHM=1
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=all
+    
+    # Device access for cameras
+    devices:
+      - /dev/video0:/dev/video0
+      - /dev/video1:/dev/video1
     
     # Volume mounts
     volumes:
