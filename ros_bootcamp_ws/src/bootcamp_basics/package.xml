@@ -7,8 +7,6 @@
   <maintainer email="bootcamp@example.com">bootcamp</maintainer>
   <license>Apache-2.0</license>
 
-  <!-- IMPORTANT for Python packages -->
-  <buildtool_depend>ament_python</buildtool_depend>
 
   <exec_depend>rclpy</exec_depend>
   <exec_depend>std_msgs</exec_depend>

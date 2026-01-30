@@ -5,6 +5,11 @@ FROM osrf/ros:humble-desktop-full
 ENV NVIDIA_VISIBLE_DEVICES=all
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
 
+# Install CUDA toolkit and cuDNN
+RUN apt-get update && apt-get install -y \
+    nvidia-cuda-toolkit \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install additional dependencies
 RUN apt-get update && apt-get install -y \
     python3-pip \
@@ -27,11 +32,11 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements.txt from parent directory
-COPY requirements.txt /tmp/requirements.txt
+# COPY requirements.txt /tmp/requirements.txt
 
 
 # Install Python packages from requirements.txt
-RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
+# RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
 
 # Setup user to match host user (avoid permission issues)
 ARG USERNAME=ros
@@ -46,6 +51,10 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
     && usermod -a -G video $USERNAME \
     && rm -rf /var/lib/apt/lists/*
+
+# Setup ROS environment in user's bashrc for interactive shells
+RUN echo "source /opt/ros/humble/setup.bash" >> /home/$USERNAME/.bashrc \
+    && echo "if [ -f /workspace/ros_bootcamp_ws/install/setup.bash ]; then source /workspace/ros_bootcamp_ws/install/setup.bash; fi" >> /home/$USERNAME/.bashrc
 
 # Setup workspace
 RUN mkdir -p /workspace/ros_bootcamp_ws/src
