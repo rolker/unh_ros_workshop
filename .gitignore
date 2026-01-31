@@ -75,3 +75,5 @@ ros_bootcamp_ws/log/
 # Docker
 docker/.env
 
+yolo*.pt
+*.onnx

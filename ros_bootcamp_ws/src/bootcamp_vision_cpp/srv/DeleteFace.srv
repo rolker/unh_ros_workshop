@@ -1,0 +1,8 @@
+# Request: Name to delete
+string name
+
+---
+
+# Response
+bool success
+string message

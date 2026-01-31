@@ -1,0 +1,15 @@
+<library path="face_enrollment_rqt">
+  <class name="FaceEnrollmentPlugin" type="face_enrollment_rqt.face_enrollment_plugin.FaceEnrollmentPlugin" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      A GUI plugin for enrolling and managing faces in the vision system.
+    </description>
+    <qtgui>
+      <group>
+        <label>Vision</label>
+      </group>
+      <label>Face Enrollment</label>
+      <icon type="theme">system-users</icon>
+      <statustip>Enroll and manage faces for recognition</statustip>
+    </qtgui>
+  </class>
+</library>

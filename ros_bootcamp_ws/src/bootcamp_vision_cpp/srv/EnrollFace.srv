@@ -1,0 +1,9 @@
+# Request: Name of person to enroll
+string name
+
+---
+
+# Response
+bool success
+string message
+string embedding_id

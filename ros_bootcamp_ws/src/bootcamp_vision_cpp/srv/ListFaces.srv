@@ -1,0 +1,7 @@
+# Request: Empty (no parameters)
+
+---
+
+# Response: List of enrolled faces
+string[] names
+int32 count
