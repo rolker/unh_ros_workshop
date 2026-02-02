@@ -1,0 +1,8 @@
+# Goal
+geometry_msgs/Point[] waypoints
+---
+# Result
+bool success
+---
+# Feedback
+float32 distance_remaining

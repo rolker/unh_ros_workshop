@@ -1,0 +1,8 @@
+# Goal
+geometry_msgs/Point[] waypoints   # array of points (x, y, z ignored)
+---
+# Result
+bool success                      # true if completed trajectory
+---
+# Feedback
+float32 distance_remaining        # distance from turtle to final waypoint

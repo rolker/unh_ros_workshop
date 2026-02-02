@@ -1,0 +1,30 @@
+# ROS 2 workspace artifacts
+/build/
+/install/
+/log/
+
+/unh_bootcaml_gif/
+# Python cache
+**/__pycache__/
+/**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Colcon build artifacts
+*.egg-info/
+*.egg
+*.deb
+
+# VSCode settings
+.vscode/
+
+# Other temp files
+*.swp
+*.bak
+*.tmp

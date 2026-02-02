@@ -1,0 +1,136 @@
+hello-robot@stretch-se3-3111:~/smarthome_ws/src/smart-home-robot/external/helper_scripts$ ros2 topic list
+/battery
+/camera/camera/color/camera_info
+/camera/camera/color/image_raw
+/camera/camera/color/image_raw/compressed
+/camera/camera/color/image_raw/compressedDepth
+/camera/camera/color/image_raw/theora
+/camera/camera/color/metadata
+/camera/camera/depth/camera_info
+/camera/camera/depth/image_rect_raw
+/camera/camera/depth/image_rect_raw/compressed
+/camera/camera/depth/image_rect_raw/compressedDepth
+/camera/camera/depth/image_rect_raw/theora
+/camera/camera/depth/metadata
+/camera/camera/extrinsics/depth_to_color
+/clicked_point
+/diagnostics
+/gamepad_joy
+/goal_pose
+/imu_mobile_base
+/imu_wrist
+/initialpose
+/is_gamepad_dongle
+/is_homed
+/is_runstopped
+/is_streaming_position
+/joint_limits
+/joint_pose_cmd
+/joint_states
+/joy
+/joy/set_feedback
+/laser_filter/transition_event
+/magnetometer_mobile_base
+/mode
+/odom
+/parameter_events
+/robot_description
+/rosout
+/scan
+/scan_filtered
+/stretch/cmd_vel
+/stretch/joint_states
+/stretch_gamepad_state
+/tf
+/tf_static
+/tool
+
+hello-robot@stretch-se3-3111:~/smarthome_ws/src/smart-home-robot/external/helper_scripts$ 
+
+ros2 topic pub /stretch/cmd_vel geometry_msgs/Twist "{linear: {x: 0.0}, angular: {z: 0.3}}" --once
+
+---
+header:
+  stamp:
+    sec: 1769565039
+    nanosec: 31239322
+  frame_id: ''
+name:
+- joint_right_wheel
+- joint_left_wheel
+- joint_lift
+- joint_arm_l3
+- joint_arm_l2
+- joint_arm_l1
+- joint_arm_l0
+- joint_wrist_yaw
+- joint_head_pan
+- joint_head_tilt
+- joint_wrist_pitch
+- joint_wrist_roll
+- joint_gripper_finger_right
+- joint_gripper_finger_left
+position:
+- 0.0
+- 0.0
+- 0.025868335166885578
+- 0.002979663074048117
+- 0.002979663074048117
+- 0.002979663074048117
+- 0.002979663074048117
+- 4.1769018536802776
+- -2.4941896608363767
+- -0.15792203778888364
+- -1.193437052975029
+- 2.2396119503130363
+- 0.0016724365728429636
+- 0.0016724365728429636
+velocity:
+- 0.0
+- 0.0
+- 3.5626709161191725e-05
+- -6.59265990497867e-05
+- -6.59265990497867e-05
+- -6.59265990497867e-05
+- -6.59265990497867e-05
+- -0.0
+- -0.0
+- -0.0
+- -0.0
+- 0.0
+- 0.0
+- 0.0
+effort:
+- 0.0
+- 0.0
+- 40.90900495940563
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.29296875
+- 0.0
+- -0.08382229673093043
+- 0.0
+- 0.0
+---
+^Chello-robot@stretch-se3-3111:~/smarthome_ws/src/smart-home-robot/external/helper_scripts$ 
+
+
+ros2 topic pub /joint_pose_cmd trajectory_msgs/JointTrajectory "header:
+  stamp:
+    sec: 0
+    nanosec: 0
+joint_names: ['joint_head_pan']
+points:
+- positions: [0.785]
+  velocities: [0.2]
+  time_from_start:
+    sec: 2
+    nanosec: 0" --once
+
+
+
+ ros2 service call /activate_streaming_position std_srvs/srv/Trigger "{}" 

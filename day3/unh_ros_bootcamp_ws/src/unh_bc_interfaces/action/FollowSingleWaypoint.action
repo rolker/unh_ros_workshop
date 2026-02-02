@@ -1,0 +1,8 @@
+# Goal
+geometry_msgs/Point waypoint      # single point (x, y, z ignored)
+---
+# Result
+bool reached                      # true if turtle reached the waypoint
+---
+# Feedback
+float32 distance_to_waypoint      # current distance from turtle to the goal
